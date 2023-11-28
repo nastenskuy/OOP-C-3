@@ -1,0 +1,104 @@
+//Завдання №1
+Console.WriteLine("Напишіть всі парні числа від 1 до 20 включно");
+for (int condition = 2; condition <= 20; condition += 2)
+{
+    Console.WriteLine(condition);
+}
+//Завдання №2
+int sum = 0;
+
+for (int numeric = 1; numeric <= 100; numeric++)
+{
+    sum += numeric;
+}
+Console.WriteLine($"{sum}");
+//Завдання №3
+Console.Write("Напишіть будь-яку цифру, для якої виведеться таблиця множення - ");
+int number = Convert.ToInt32(Console.ReadLine());
+for (int i = 1; i <= 10; i++)
+{
+    int result = number * i;
+    Console.WriteLine($"{number} x {i} = {result}");
+}
+//Завдання №5
+static bool IsPrime(int n)
+{
+    if (n <= 1)
+    {
+        return false;
+    }
+    else if (n == 2)
+    {
+        return true;
+    }
+    else if (n % 2 == 0)
+    {
+        return false;
+    }
+
+    for (int i = 3; i <= Math.Sqrt(n); i += 2)
+    {
+        if (n % i == 0)
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+int sum = 0;
+for (int number = 2; number <= 50; number++)
+{
+    if (IsPrime(number))
+    {
+        sum += number;
+    }
+}
+Console.WriteLine($"Сума всіх простих чисел від 1 до 50 = {sum}");
+Console.ReadLine();
+//Завдання №6
+Console.Write("Напишіть будь-яке число, для того щоб перевести його у двійкову систему - ");
+int initial = Convert.ToInt32(Console.ReadLine());
+
+string endResult = DecimalToBinary(initial);
+{
+    Console.WriteLine($"{endResult}");
+}
+static string DecimalToBinary(int initial)
+{
+    return Convert.ToString(initial, 2);
+}
+//Завдання №7
+Console.Write("Напишіть будь-яке число для знаходження послідовності Фібоначі - ");
+int max = Convert.ToInt32(Console.ReadLine());
+int sum = 0;
+int n1 = 0;
+int n2 = 1;
+int together = 0;
+while (n2 < max)
+{
+    sum += n2;
+    together++;
+    int a = n1;
+    n1 = n2;
+    n2 = a + n2;
+}
+Console.WriteLine($"Сума менша від заданого числа  -  {sum}");
+Console.WriteLine($"Всі елементи = {together}");
+//Завдання №8
+Console.Write("Напишіть будь-яке число - ");
+int n1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Напишіть ще одне число - ");
+int n2 = Convert.ToInt32(Console.ReadLine());
+int divider = FindGCD(n1, n2);
+Console.WriteLine($"Отже, найбільший спільний дільник -  {divider}");
+static int FindGCD(int var1, int var2)
+{
+    while (var2 != 0)
+    {
+        int temp = var2;
+        var2 = var1 % var2;
+        var1 = temp;
+    }
+    return var1;
+}
